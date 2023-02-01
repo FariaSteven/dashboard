@@ -4,9 +4,9 @@
 
 ## 💻 Dependencies
 
-Styled-components: To style and use styles as components;
-Axios: To consume the API;
-JSCharts: To plot the data in charts;
+- `Styled-components`: To style and use styles as components;
+- `Axios`: To consume the API;
+- `JSCharts`: To plot the data in charts;
 
 
 ## 💻 Prerequisites
