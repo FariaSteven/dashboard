@@ -7,6 +7,7 @@ const Container = ({children, title}) => {
   return (
     <S.Container>
       <Menu/>
+      <div>CHARTSJS</div>
       <div>
         {title && <S.Title>{title}</S.Title>}
         <S.Wrapper>
