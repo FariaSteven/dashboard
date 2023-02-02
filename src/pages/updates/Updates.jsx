@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
-import axios from "axios";
 import instance from "../../utils/instance";
 import findMatchingId from "../../utils/findMatchingIndex";
 import formatDate from "../../utils/formatDate";
-import Container from "../container/Container";
+import Container from "../../components/container/Container";
 
 const Updates = () => {
   const [hostData, setHostData] = useState([]);

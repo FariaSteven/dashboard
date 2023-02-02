@@ -1,32 +1,31 @@
 import React, { useCallback, useEffect, useState } from "react";
-import axios from "axios";
-import Hosts from "../../components/hosts/Hosts";
-import Packackes from "../../components/packages/Packages";
-import Updates from "../../components/updates/Updates";
+import Container from "../../components/container/Container";
+import instance from "../../utils/instance";
 
 const Home = () => {
-  const [render, setRender] = useState("hosts");
+  const [hostData, setHostData] = useState([]);
+  const [updatesData, setUpdatesData] = useState([]);
+  const [packagesData, setPackagesData] = useState([]);
 
-  const renderComponent = () => {
-    switch (render) {
-      case "hosts":
-        return <Hosts />;
-      case "packages":
-        return <Packackes />;
-      case "updates":
-        return <Updates />;
-    }
-  };
+  useEffect(() => {
+    instance.get("hosts").then((res) => {
+      setHostData(res.data);
+    });
 
+    instance.get("packages").then((res) => {
+      setPackagesData(res.data);
+    });
+
+    instance.get("updateshistory").then((res) => {
+      setUpdatesData(res.data);
+    });
+  }, [])
   return (
-    <div>
-      <div>
-        <button onClick={() => setRender("hosts")}>Hosts</button>
-        <button onClick={() => setRender("packages")}>Packages</button>
-        <button onClick={() => setRender("updates")}>Updates</button>
-      </div>
-      {renderComponent()}
-    </div>
+    <Container>
+      <div>{hostData.length}</div>
+      <div>{updatesData.length}</div>
+      <div>{packagesData.length}</div>
+    </Container>
   );
 };
 

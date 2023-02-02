@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import formatDate from "../../utils/formatDate";
-import Container from "../container/Container";
+import Container from "../../components/container/Container";
 
-const Packackes = () => {
+const Packages = () => {
   const [packagesData, setPackagesData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(3);
@@ -39,4 +39,4 @@ const Packackes = () => {
   );
 };
 
-export default Packackes;
+export default Packages;

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import instance from "../../utils/instance";
 import findMatchingId from "../../utils/findMatchingIndex";
 import formatDate from "../../utils/formatDate";
-import Container from "../container/Container";
+import Container from "../../components/container/Container";
 
 const Hosts = () => {
   const [hostData, setHostData] = useState([]);
