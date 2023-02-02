@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import instance from "../../utils/instance";
 import findMatchingId from "../../utils/findMatchingIndex";
 import formatDate from "../../utils/formatDate";
+import Container from "../container/Container";
 
 const Hosts = () => {
   const [hostData, setHostData] = useState([]);
@@ -24,9 +25,7 @@ const Hosts = () => {
   const currentItems = hostData?.slice(firstItemIndex, lastItemIndex);
   
   return (
-    <div>
-      <h1>Host</h1>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <Container title={'Hosts'}>
         {currentItems?.map((item, i) => (
           <div key={i}>
             <div>ID: {item.id ? item.id : "-"}</div>
@@ -38,7 +37,7 @@ const Hosts = () => {
             <div>ipv6: {item.ipv6 ? item.ipv6 : "-"}</div>
             <div>created_at: {item.created_at ? formatDate(item.created_at) : "-"}</div>
             <div>updated_at: {item.updated_at ? formatDate(item.updated_at) : "-"}</div>
-            <div>packages: {item.packages ? item.packages : "-"}</div>
+            <div>packages: {item.packages ? item.packages.map((id) => findMatchingId(id, packagesData, 'name')) : "-"}</div>
             <div>
               packages_upgradable:{" "}
               {item.packages_upgradable ? item.packages_upgradable.map((id) => findMatchingId(id, packagesData, 'name')) : "-"}
@@ -48,8 +47,7 @@ const Hosts = () => {
             </div>
           </div>
         ))}
-      </div>
-    </div>
+    </Container>
   );
 };
 

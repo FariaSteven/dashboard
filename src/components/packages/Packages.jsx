@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import formatDate from "../../utils/formatDate";
+import Container from "../container/Container";
 
 const Packackes = () => {
   const [packagesData, setPackagesData] = useState([]);
@@ -18,22 +19,23 @@ const Packackes = () => {
   const currentItems = packagesData?.slice(firstItemIndex, lastItemIndex);
 
   return (
-    <div>
-      <h1>Host</h1>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        {currentItems?.map((item, i) => (
-          <div key={i}>
-            <div>ID: {item.id ? item.id : "-"}</div>
-            <div>UUID: {item.uuid ? item.uuid : "-"}</div>
-            <div>name: {item.name ? item.name : "-"}</div>
-            <div>version: {item.version ? item.version : "-"}</div>
-            <div>macAdress: {item.macaddress ? item.macaddress : "-"}</div>
-            <div>created_at: {item.created_at ? formatDate(item.created_at) : "-"}</div>
-            <div>updated_at: {item.updated_at ? formatDate(item.updated_at) : "-"}</div>
+    <Container title={"Packages"}>
+      {currentItems?.map((item, i) => (
+        <div key={i}>
+          <div>ID: {item.id ? item.id : "-"}</div>
+          <div>UUID: {item.uuid ? item.uuid : "-"}</div>
+          <div>name: {item.name ? item.name : "-"}</div>
+          <div>version: {item.version ? item.version : "-"}</div>
+          <div>macAdress: {item.macaddress ? item.macaddress : "-"}</div>
+          <div>
+            created_at: {item.created_at ? formatDate(item.created_at) : "-"}
           </div>
-        ))}
-      </div>
-    </div>
+          <div>
+            updated_at: {item.updated_at ? formatDate(item.updated_at) : "-"}
+          </div>
+        </div>
+      ))}
+    </Container>
   );
 };
 
