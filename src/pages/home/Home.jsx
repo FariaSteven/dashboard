@@ -23,7 +23,7 @@ const Home = () => {
   }, [])
 
   return (
-    <Container>
+    <Container hostData={hostData} packagesData={packagesData} updatesData={updatesData}>
       <S.Wrapper>
         <S.Card><S.CardTitle>Hosts</S.CardTitle><S.CardNumber>{hostData.length}</S.CardNumber></S.Card>
         <S.Card><S.CardTitle>Packages</S.CardTitle><S.CardNumber>{packagesData.length}</S.CardNumber></S.Card>
