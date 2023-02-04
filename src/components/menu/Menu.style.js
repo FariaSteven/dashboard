@@ -13,12 +13,16 @@ export const Button = styled(Link)`
   background-color: #fff;
   border-radius: 15px;
   font-weight: 300;
-  transition: 0.4s ease-in-out;
   text-align: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 10px 7px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
   &:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 16px 20px -5px, rgba(0, 0, 0, 0.1) 0px 15px 8px -8px;
+    transition: 0.4s ease-in-out;
+  }
+
+  &:focus-visible {
+    background-color: #000;
   }
 `;
 

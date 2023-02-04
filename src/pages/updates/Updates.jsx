@@ -3,6 +3,7 @@ import instance from "../../utils/instance";
 import findMatchingId from "../../utils/findMatchingIndex";
 import formatDate from "../../utils/formatDate";
 import Container from "../../components/container/Container";
+import Menu from "../../components/menu/Menu";
 
 const Updates = () => {
   const [hostData, setHostData] = useState([]);
@@ -25,35 +26,63 @@ const Updates = () => {
   const currentItems = updatesData?.slice(firstItemIndex, lastItemIndex);
 
   return (
-    <Container title={'Update History'}>
+    <Container title={"Update History"}>
+      <Menu/>
       {currentItems?.map((item, i) => (
-        <div key={i}>
-          <div>ID: {item.id ? item.id : "-"}</div>
-          <div>UUID: {item.uuid ? item.uuid : "-"}</div>
-          <div>status: {item.status ? item.status : "-"}</div>
-          <div>result: {item.result ? item.result : "-"}</div>
-          <div>progress: {item.progress ? item.progress : "-"}</div>
-          <div>
-            packages_before: {item.packages_before ? item.packages_before : "-"}
-          </div>
-          <div>
-            packages_after: {item.packages_after ? item.packages_after : "-"}
-          </div>
-          <div>
-            packages_diff: {item.packages_diff ? item.packages_diff : "-"}
-          </div>
-          <div>ansible_log: {item.ansible_log ? item.ansible_log : "-"}</div>
-          <div>
-            created_at: {item.created_at ? formatDate(item.created_at) : "-"}
-          </div>
-          <div>
-            updated_at: {item.updated_at ? formatDate(item.updated_at) : "-"}
-          </div>
-          <div>
-            host:{" "}
-            {item.host ? findMatchingId(item.host, hostData, "hostname") : "-"}
-          </div>
-        </div>
+        <ul key={i}>
+          {/* <li>
+            <p><b>ID:</b> {item.id ? item.id : "-"}</p>
+          </li> */}
+          <li>
+            <p><b>UUID:</b> {item.uuid ? item.uuid : "-"}</p>
+          </li>
+          <li>
+            <p><b>status:</b> {item.status ? item.status : "-"}</p>
+          </li>
+          <li>
+            <p><b>result:</b> {item.result ? item.result : "-"}</p>
+          </li>
+          <li>
+            <p><b>progress:</b> {item.progress ? item.progress : "-"}</p>
+          </li>
+          <li>
+            <p><b>
+              packages_before:</b>{" "}
+              {item.packages_before ? item.packages_before : "-"}
+            </p>
+          </li>
+          <li>
+            <p><b>
+              packages_after:</b> {item.packages_after ? item.packages_after : "-"}
+            </p>
+          </li>
+          <li>
+            <p><b>
+              packages_diff:</b> {item.packages_diff ? item.packages_diff : "-"}
+            </p>
+          </li>
+          <li>
+            <p><b>ansible_log:</b> {item.ansible_log ? item.ansible_log : "-"}</p>
+          </li>
+          <li>
+            <p><b>
+              created_at:</b> {item.created_at ? formatDate(item.created_at) : "-"}
+            </p>
+          </li>
+          <li>
+            <p><b>
+              updated_at:</b> {item.updated_at ? formatDate(item.updated_at) : "-"}
+            </p>
+          </li>
+          <li>
+            <p><b>
+              host:</b>{" "}
+              {item.host
+                ? findMatchingId(item.host, hostData, "hostname")
+                : "-"}
+            </p>
+          </li>
+        </ul>
       ))}
     </Container>
   );

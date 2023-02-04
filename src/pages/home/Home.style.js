@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 20px;
+`
+
+export const CardsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
