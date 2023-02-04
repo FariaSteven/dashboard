@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`
-
 export const CardsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 `;
 

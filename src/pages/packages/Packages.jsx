@@ -4,6 +4,7 @@ import formatDate from "../../utils/formatDate";
 import Container from "../../components/container/Container";
 import Menu from "../../components/menu/Menu";
 import * as S from "./Packages.style";
+import { Link } from "react-router-dom";
 
 const Packages = () => {
   const [packagesData, setPackagesData] = useState([]);
@@ -23,45 +24,64 @@ const Packages = () => {
   return (
     <Container>
       <Menu />
-      <S.CardsWrapper>
-        {currentItems?.map((item, i) => (
-          <S.Card key={i}>
-            {/* <li>ID: {item.id ? item.id : "-"}</li> */}
-            <S.CardItem>
-              <S.CardItemLabel>Name:</S.CardItemLabel>
-              <S.CardText>{item.name ? item.name : "-"}</S.CardText>
-            </S.CardItem>
-            <S.CardItem>
-              <S.CardItemLabel>UUID:</S.CardItemLabel>
-              <S.CardText>{item.uuid ? item.uuid : "-"}</S.CardText>
-            </S.CardItem>
-            <S.CardItem>
-              <S.CardItemLabel>Version:</S.CardItemLabel>
-              <S.CardText>{item.version ? item.version : "-"}</S.CardText>
-            </S.CardItem>
-            <S.CardItem>
-              <S.CardItemLabel>MAC Address:</S.CardItemLabel>
-              <S.CardText>{item.macaddress ? item.macaddress : "-"}</S.CardText>
-            </S.CardItem>
-            <S.CardItem>
-              <S.CardItemLabel>Created At:</S.CardItemLabel>{" "}
-              <S.CardText>
-                {item.created_at ? formatDate(item.created_at) : "-"}
-              </S.CardText>
-            </S.CardItem>
-            <S.CardItem>
-              <S.CardItemLabel>Updated At:</S.CardItemLabel>{" "}
-              <S.CardText>
-                {item.updated_at ? formatDate(item.updated_at) : "-"}
-              </S.CardText>
-            </S.CardItem>
-          </S.Card>
-        ))}
+      <S.Wrapper>
+        <h1>Packages</h1>
+        <S.CardsWrapper>
+          {currentItems?.map((item, i) => (
+            <S.Card key={i}>
+              <Link to={`/packages/${item.id}`}>
+                {/* <li>ID: {item.id ? item.id : "-"}</li> */}
+                <S.CardItem>
+                  <S.CardItemLabel>Name:</S.CardItemLabel>
+                  <S.CardText>{item.name ? item.name : "-"}</S.CardText>
+                </S.CardItem>
+                <S.CardItem>
+                  <S.CardItemLabel>UUID:</S.CardItemLabel>
+                  <S.CardText>{item.uuid ? item.uuid : "-"}</S.CardText>
+                </S.CardItem>
+                <S.CardItem>
+                  <S.CardItemLabel>Version:</S.CardItemLabel>
+                  <S.CardText>{item.version ? item.version : "-"}</S.CardText>
+                </S.CardItem>
+                <S.CardItem>
+                  <S.CardItemLabel>MAC Address:</S.CardItemLabel>
+                  <S.CardText>
+                    {item.macaddress ? item.macaddress : "-"}
+                  </S.CardText>
+                </S.CardItem>
+                <S.CardItem>
+                  <S.CardItemLabel>Created At:</S.CardItemLabel>{" "}
+                  <S.CardText>
+                    {item.created_at ? formatDate(item.created_at) : "-"}
+                  </S.CardText>
+                </S.CardItem>
+                <S.CardItem>
+                  <S.CardItemLabel>Updated At:</S.CardItemLabel>{" "}
+                  <S.CardText>
+                    {item.updated_at ? formatDate(item.updated_at) : "-"}
+                  </S.CardText>
+                </S.CardItem>
+              </Link>
+            </S.Card>
+          ))}
+        </S.CardsWrapper>
         <S.ButtonsWrapper>
-          <S.PageButton disabled={currentPage === 1 ? true : false} firstPage={currentPage} onClick={() => setCurrentPage(currentPage - 1)}>Back</S.PageButton>
-          <S.PageButton disabled={currentItems.length !== 16 ? true : false} lastPage={currentPage} onClick={() => setCurrentPage(currentPage + 1)}>Next</S.PageButton>
+          <S.PageButton
+            disabled={currentPage === 1 ? true : false}
+            firstPage={currentPage}
+            onClick={() => setCurrentPage(currentPage - 1)}
+          >
+            Back
+          </S.PageButton>
+          <S.PageButton
+            disabled={currentItems.length !== 16 ? true : false}
+            lastPage={currentPage}
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            Next
+          </S.PageButton>
         </S.ButtonsWrapper>
-      </S.CardsWrapper>
+      </S.Wrapper>
     </Container>
   );
 };
