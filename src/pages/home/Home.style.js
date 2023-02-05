@@ -5,6 +5,8 @@ export const Container = styled.div`
   justify-content: space-between;
   gap: 40px;
   padding: 20px;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
 `
 
 export const CardsWrapper = styled.div`

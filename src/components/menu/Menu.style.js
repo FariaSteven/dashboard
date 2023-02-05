@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const ButtonsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 20px;
 `;
 

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const ChartWrapper = styled.div`
-  width: 70%;
+  /* width: 50%; */
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   padding: 10px 20px;
   background-color: #fff;
   border-radius: 45px;

@@ -48,7 +48,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
 
   console.log("hostData", hostData);
@@ -56,15 +56,17 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
   console.log("updatesData", updatesData);
 
   const hostsDates = hostData.map((item) => formatDate(item?.created_at));
-  const packagesDates = packagesData.map((item) => formatDate(item?.created_at));
+  const packagesDates = packagesData.map((item) =>
+    formatDate(item?.created_at)
+  );
   const updatesDates = updatesData.map((item) => formatDate(item?.created_at));
 
   const formated = hostsDates.concat(packagesDates).concat(updatesDates);
 
-  console.log('hostsDates', hostsDates)
-  console.log('packagesDates', packagesDates)
-  console.log('updatesDates', updatesDates)
-  
+  console.log("hostsDates", hostsDates);
+  console.log("packagesDates", packagesDates);
+  console.log("updatesDates", updatesDates);
+
   // hostData?.find((item) => item?.id === id)?.name
 
   // return data?.find((item) => item?.id === id)?.name
@@ -121,18 +123,15 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
   };
 
   return (
-    <div>
       <S.ChartWrapper>
-      <Bar options={options} data={dataHosts} />
-    </S.ChartWrapper>
-    <S.ChartWrapper>
-      <Bar options={options} data={dataPackages} />
-    </S.ChartWrapper>
-    <S.ChartWrapper>
-      <Bar options={options} data={dataUpdates} />
-    </S.ChartWrapper>
-    </div>
-    
+        <Bar options={options} data={dataHosts} />
+      {/* </S.ChartWrapper> */}
+      {/* <S.ChartWrapper> */}
+        <Bar options={options} data={dataPackages} />
+      {/* </S.ChartWrapper> */}
+      {/* <S.ChartWrapper> */}
+        <Bar options={options} data={dataUpdates} />
+      </S.ChartWrapper>
   );
 };
 
