@@ -48,10 +48,28 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     "September",
     "October",
     "November",
-    "December",
+    "December"
   ];
 
-  const data = {
+  console.log("hostData", hostData);
+  console.log("packagesData", packagesData);
+  console.log("updatesData", updatesData);
+
+  const hostsDates = hostData.map((item) => formatDate(item?.created_at));
+  const packagesDates = packagesData.map((item) => formatDate(item?.created_at));
+  const updatesDates = updatesData.map((item) => formatDate(item?.created_at));
+
+  const formated = hostsDates.concat(packagesDates).concat(updatesDates);
+
+  console.log('hostsDates', hostsDates)
+  console.log('packagesDates', packagesDates)
+  console.log('updatesDates', updatesDates)
+  
+  // hostData?.find((item) => item?.id === id)?.name
+
+  // return data?.find((item) => item?.id === id)?.name
+
+  const dataHosts = {
     labels,
     options: {
       maintainAspectRatio: false,
@@ -65,6 +83,15 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
         borderRadius: 55,
         backgroundColor: "#0400ff7f",
       },
+    ],
+  };
+
+  const dataPackages = {
+    labels,
+    options: {
+      maintainAspectRatio: false,
+    },
+    datasets: [
       {
         label: "Packages",
         data: labels.map(() => Math.floor(Math.random() * 300)),
@@ -73,6 +100,15 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
         borderRadius: 55,
         backgroundColor: "rgba(13, 153, 0, 0.500)",
       },
+    ],
+  };
+
+  const dataUpdates = {
+    labels,
+    options: {
+      maintainAspectRatio: false,
+    },
+    datasets: [
       {
         label: "Updates",
         data: labels.map(() => Math.floor(Math.random() * 300)),
@@ -84,26 +120,19 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     ],
   };
 
-  console.log("hostData", hostData);
-  console.log("packagesData", packagesData);
-  console.log("updatesData", updatesData);
-
-  const hostsDates = hostData.map((item) => formatDate(item?.created_at));
-  const packagesDates = packagesData.map((item) => formatDate(item?.created_at));
-  const updatesDates = updatesData.map((item) => formatDate(item?.created_at));
-
-  console.log('hostsDates', hostsDates)
-  console.log('packagesDates', packagesDates)
-  console.log('updatesDates', updatesDates)
-  
-  // hostData?.find((item) => item?.id === id)?.name
-
-  // return data?.find((item) => item?.id === id)?.name
-
   return (
-    <S.ChartWrapper>
-      <Bar options={options} data={data} />
+    <div>
+      <S.ChartWrapper>
+      <Bar options={options} data={dataHosts} />
     </S.ChartWrapper>
+    <S.ChartWrapper>
+      <Bar options={options} data={dataPackages} />
+    </S.ChartWrapper>
+    <S.ChartWrapper>
+      <Bar options={options} data={dataUpdates} />
+    </S.ChartWrapper>
+    </div>
+    
   );
 };
 

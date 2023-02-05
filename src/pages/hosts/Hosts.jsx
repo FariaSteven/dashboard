@@ -83,7 +83,7 @@ const Hosts = () => {
                   <S.CardText>
                     {item.packages
                       ? item.packages.map((id) => (
-                          <S.ItemTag>
+                          <S.ItemTag to={`/hosts/${id}`}>
                             {findMatchingId(id, packagesData, "name")}
                           </S.ItemTag>
                         ))

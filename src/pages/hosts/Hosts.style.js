@@ -46,7 +46,7 @@ export const CardText = styled.p`
   gap: 5px;
 `;
 
-export const ItemTag = styled.p`
+export const ItemTag = styled.a`
   border-radius: 10px;
   padding: 2px 5px;
   background-color: #a1a1a1;
