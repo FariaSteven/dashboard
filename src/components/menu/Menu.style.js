@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 
 export const ButtonsWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   /* flex-direction: column; */
   gap: 20px;
 `;
 
 export const Button = styled(Link)`
-  font-size: 2rem;
+  font-size: 1.2rem;
   padding: 10px 20px;
   background-color: #fff;
   border-radius: 15px;

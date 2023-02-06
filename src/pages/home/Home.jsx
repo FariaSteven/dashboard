@@ -27,13 +27,13 @@ const Home = () => {
     <S.Container>
       <div>
         <Menu />
-      <Chart
-        hostData={hostData}
-        packagesData={packagesData}
-        updatesData={updatesData}
-      />
+        <Chart
+          hostData={hostData}
+          packagesData={packagesData}
+          updatesData={updatesData}
+        />
       </div>
-      
+
       <S.CardsWrapper>
         <S.Card>
           <S.CardTitle>Hosts</S.CardTitle>

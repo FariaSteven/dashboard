@@ -6,6 +6,7 @@ import Container from "../../components/container/Container";
 import Menu from "../../components/menu/Menu";
 import * as S from "./Host.style";
 import { Link, useLocation, useParams } from "react-router-dom";
+import backIcon from "../../assets/back.svg";
 
 const Host = () => {
   const [hostData, setHostData] = useState([]);
@@ -31,6 +32,9 @@ const Host = () => {
   return (
     <Container>
       <Menu />
+      <S.BackIcon to={'/hosts'}>
+                <img src={backIcon} />
+              </S.BackIcon>
       <S.CardsWrapper>
           <S.Card>
             <S.CardItem>

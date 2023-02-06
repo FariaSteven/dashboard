@@ -6,12 +6,15 @@ import Container from "../../components/container/Container";
 import Menu from "../../components/menu/Menu";
 import * as S from "./Hosts.style";
 import { Link } from "react-router-dom";
+import searchIcon from "../../assets/search.svg";
+import backIcon from "../../assets/back.svg";
 
 const Hosts = () => {
   const [hostData, setHostData] = useState([]);
   const [packagesData, setPackagesData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     instance.get("hosts").then((res) => {
@@ -25,13 +28,26 @@ const Hosts = () => {
 
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItems = hostData?.slice(firstItemIndex, lastItemIndex);
+  const currentItems = search ? hostData.filter((host) => host.hostname.includes(search)) : hostData?.slice(firstItemIndex, lastItemIndex);
 
   return (
     <Container>
       <Menu />
       <S.Wrapper>
-        <h1>Host</h1>
+      <S.Heading>
+          <S.Organizer>
+            <S.BackIcon to={'/'}>
+              <img src={backIcon}/>
+          </S.BackIcon>
+          <S.Title>Hosts</S.Title>
+          </S.Organizer>
+          <S.Search>
+            <S.SearchInput onChange={(e) => setSearch(e.target.value)}/>
+            <S.SearchIcon>
+              <img src={searchIcon}/>
+            </S.SearchIcon>
+          </S.Search>
+        </S.Heading>
         <S.CardsWrapper>
           {currentItems?.map((item, i) => (
             <S.Card key={i}>

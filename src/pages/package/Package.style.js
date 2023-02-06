@@ -1,9 +1,29 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+export const BackIcon = styled(Link)`
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+  padding: 0px 10px 0px 0px;
+  border-radius: 40px;
+  padding: 5px;
+  background-color: white;
+  height: 100%;
+  transition: 0.4s ease-in-out;
+  &:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 16px 20px -5px,
+      rgba(0, 0, 0, 0.1) 0px 15px 8px -8px;
+    cursor: pointer;
+  }
+`;
 
 export const CardsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
+  margin-top: 20px;
 `;
 
 export const Card = styled.ul`

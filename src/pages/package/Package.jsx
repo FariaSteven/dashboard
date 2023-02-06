@@ -6,6 +6,7 @@ import Container from "../../components/container/Container";
 import Menu from "../../components/menu/Menu";
 import * as S from "./Package.style";
 import { Link, useLocation, useParams } from "react-router-dom";
+import backIcon from "../../assets/back.svg";
 
 const Package = () => {
   const [hostData, setHostData] = useState([]);
@@ -27,6 +28,9 @@ const Package = () => {
   return (
     <Container>
       <Menu />
+      <S.BackIcon to={'/packages'}>
+                <img src={backIcon} />
+              </S.BackIcon>
       <S.CardsWrapper>
         <S.Card>
           <S.CardItem>

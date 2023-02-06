@@ -79,7 +79,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     datasets: [
       {
         label: "Hosts",
-        data: labels.map(() => Math.floor(Math.random() * 300)),
+        data: labels.map(() => hostData.length),
         borderColor: "rgb(4, 0, 255)",
         borderWidth: 2,
         borderRadius: 55,
@@ -96,7 +96,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     datasets: [
       {
         label: "Packages",
-        data: labels.map(() => Math.floor(Math.random() * 300)),
+        data: labels.map(() => packagesData.length),
         borderColor: "rgb(13, 160, 0)",
         borderWidth: 2,
         borderRadius: 55,
@@ -113,7 +113,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     datasets: [
       {
         label: "Updates",
-        data: labels.map(() => Math.floor(Math.random() * 300)),
+        data: labels.map(() => updatesData.length),
         borderColor: "rgb(250, 121, 0)",
         borderWidth: 2,
         borderRadius: 55,
@@ -123,15 +123,17 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
   };
 
   return (
+    <S.ChartContainer>
       <S.ChartWrapper>
         <Bar options={options} data={dataHosts} />
-      {/* </S.ChartWrapper> */}
-      {/* <S.ChartWrapper> */}
+      </S.ChartWrapper>
+      <S.ChartWrapper>
         <Bar options={options} data={dataPackages} />
-      {/* </S.ChartWrapper> */}
-      {/* <S.ChartWrapper> */}
+      </S.ChartWrapper>
+      <S.ChartWrapper>
         <Bar options={options} data={dataUpdates} />
       </S.ChartWrapper>
+    </S.ChartContainer>
   );
 };
 

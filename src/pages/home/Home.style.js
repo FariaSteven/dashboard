@@ -7,6 +7,18 @@ export const Container = styled.div`
   padding: 20px;
   /* display: grid;
   grid-template-columns: 1fr 1fr 1fr; */
+  @media (max-width: 1024px) {
+    /* max-width: 500px; */
+   /* flex-direction: column; */
+  };
+  @media (max-width: 425px) {
+    /* max-width: 500px; */
+   flex-direction: column;
+  };
+  @media (max-width: 768px) {
+    /* max-width: 500px; */
+   flex-direction: column;
+  };
 `
 
 export const CardsWrapper = styled.div`
@@ -18,6 +30,18 @@ export const CardsWrapper = styled.div`
   height: 100%;
   padding: 30px;
   border-radius: 45px;
+  @media (max-width: 1024px) {
+   /* flex-direction: row; */
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+  };
+  @media (max-width: 425px) {
+   flex-direction: row;
+  };
+  @media (max-width: 768px) {
+   flex-direction: row;
+  };
 `;
 
 export const Card = styled.div`
@@ -33,6 +57,18 @@ export const Card = styled.div`
   align-items: center;
   gap: 25px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 10px -5px, rgba(0, 0, 0, 0.3) 0px 8px 8px -8px;
+  @media (max-width: 1024px) {
+    width: 300px;
+    padding: 10px;
+  };
+  @media (max-width: 425px) {
+    width: 300px;
+    padding: 10px;
+  };
+  @media (max-width: 768px) {
+    width: 200px;
+    padding: 10px;
+  };
 `
 export const CardTitle = styled.div`
   font-size: 1.8rem;
