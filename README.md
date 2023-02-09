@@ -8,6 +8,9 @@
 - `Axios`: To consume the API;
 - `JSCharts`: To plot the data in charts;
 
+## Future Updates
+
+- Compare differences between the update history packages route and show the differences before and after update; 
 
 ## 💻 Prerequisites
 
