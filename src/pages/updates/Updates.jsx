@@ -20,7 +20,6 @@ const Updates = () => {
   useEffect(() => {
     instance.get("updateshistory").then((res) => {
       setUpdatesData(res.data);
-      console.log('updatesData', updatesData)
     });
 
     instance.get("hosts").then((res) => {
@@ -32,17 +31,14 @@ const Updates = () => {
     });
   }, []);
 
-  console.log('updatesData', updatesData)
-
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
   const currentItems = search ? updatesData.filter((update) => update.uuid.includes(search)) : updatesData?.slice(firstItemIndex, lastItemIndex);
 
-  console.log('packages id', currentItems[0]?.packages_before.split(","))
 
   return (
     <Container title={"Update History"}>
-      <Menu />
+      <Menu /> 
         <S.Wrapper>
           <S.Heading>
             <S.Organizer>

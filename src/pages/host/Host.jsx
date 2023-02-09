@@ -13,7 +13,6 @@ const Host = () => {
   const [packagesData, setPackagesData] = useState([]);
 
   const location = useLocation()
-  console.log('ASDASDASD', location)
 
   let { id } = useParams();
 
@@ -26,8 +25,6 @@ const Host = () => {
       setPackagesData(res.data);
     });
   }, []);
-
-  console.log(hostData)
   
   return (
     <Container>

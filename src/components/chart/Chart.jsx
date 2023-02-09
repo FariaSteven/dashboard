@@ -12,6 +12,8 @@ import {
 import { Bar } from "react-chartjs-2";
 import * as S from "./Chart.style";
 import formatDate from "../../utils/formatDate";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const Chart = ({ hostData, packagesData, updatesData }) => {
   ChartJS.register(
@@ -36,25 +38,6 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     },
   };
 
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  console.log("hostData", hostData);
-  console.log("packagesData", packagesData);
-  console.log("updatesData", updatesData);
-
   const hostsDates = hostData.map((item) => formatDate(item?.created_at));
   const packagesDates = packagesData.map((item) =>
     formatDate(item?.created_at)
@@ -63,14 +46,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
 
   const formated = hostsDates.concat(packagesDates).concat(updatesDates);
 
-  console.log("hostsDates", hostsDates);
-  console.log("packagesDates", packagesDates);
-  console.log("updatesDates", updatesDates);
-
-  // hostData?.find((item) => item?.id === id)?.name
-
-  // return data?.find((item) => item?.id === id)?.name
-
+  const labels = formated;
   const dataHosts = {
     labels,
     options: {
@@ -79,7 +55,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     datasets: [
       {
         label: "Hosts",
-        data: labels.map(() => hostData.length),
+        data: labels.map(() => Math.random() * hostData.length),
         borderColor: "rgb(4, 0, 255)",
         borderWidth: 2,
         borderRadius: 55,
@@ -96,7 +72,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     datasets: [
       {
         label: "Packages",
-        data: labels.map(() => packagesData.length),
+        data: labels.map(() => Math.random() * packagesData.length),
         borderColor: "rgb(13, 160, 0)",
         borderWidth: 2,
         borderRadius: 55,
@@ -113,7 +89,7 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
     datasets: [
       {
         label: "Updates",
-        data: labels.map(() => updatesData.length),
+        data: labels.map(() => Math.random() * updatesData.length),
         borderColor: "rgb(250, 121, 0)",
         borderWidth: 2,
         borderRadius: 55,
@@ -123,17 +99,23 @@ const Chart = ({ hostData, packagesData, updatesData }) => {
   };
 
   return (
-    <S.ChartContainer>
-      <S.ChartWrapper>
-        <Bar options={options} data={dataHosts} />
-      </S.ChartWrapper>
-      <S.ChartWrapper>
-        <Bar options={options} data={dataPackages} />
-      </S.ChartWrapper>
-      <S.ChartWrapper>
-        <Bar options={options} data={dataUpdates} />
-      </S.ChartWrapper>
-    </S.ChartContainer>
+    <S.ChartWrapper>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+      >
+        <SwiperSlide>
+          <Bar options={options} data={dataHosts} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Bar options={options} data={dataPackages} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Bar options={options} data={dataUpdates} />
+        </SwiperSlide>
+        ...
+      </Swiper>
+    </S.ChartWrapper>
   );
 };
 

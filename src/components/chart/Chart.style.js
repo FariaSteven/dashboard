@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
 export const ChartContainer = styled.div`
-  display: flex;
+  /* display: flex; */
   /* flex-direction: row; */
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 20px;
-  /* @media (min-width: 1024px) {
+  /* flex-wrap: wrap; */
+  /* gap: 20px; */
+  
+  @media (min-width: 1024px) {
   }
   @media (min-width: 768px) {
     flex-direction: column;
-  } */
+  }
 `;
 
 export const ChartWrapper = styled.div`
-  width: 70%;
+  margin-top: 20px;
+  width: 80vw;
   padding: 10px 20px;
   background-color: #fff;
   border-radius: 45px;
@@ -23,15 +24,15 @@ export const ChartWrapper = styled.div`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 16px 20px -5px,
     rgba(0, 0, 0, 0.1) 0px 15px 8px -8px;
   @media (max-width: 1024px) {
-    width: 100%;
+    width: 50vw;
   };
   @media (max-width: 425px) {
-    width: 100%;
+    width: 90vw;
   };
   @media (max-width: 320px) {
-    width: 100%;
+    width: 90vw;
   };
   @media (max-width: 768px) {
-    width: 77%;
+    width: 90vw;
   };
 `;
